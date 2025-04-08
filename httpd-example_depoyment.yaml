@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: httpd-example
+    app.openshift.io/runtime: apache
+  name: httpd-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: httpd-example
+  template:
+    metadata:
+      labels:
+        name: httpd-example
+      name: httpd-example
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/test-rhsso/httpd-example@sha256:2cd45ef52ae381b1e55919bac513d38e7652bb0ecb9fd6ee6b8f03350ff79d33
+        imagePullPolicy: IfNotPresent
+        name: httpd-example
+        ports:
+        - containerPort: 8080
+          protocol: TCP
