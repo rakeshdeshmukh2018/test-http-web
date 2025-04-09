@@ -6,9 +6,7 @@ metadata:
     app.kubernetes.io/instance: test
     app.openshift.io/runtime: apache
   name: http-route
-  namespace: test-rhsso
 spec:
-  host: http-route-test-rhsso.apps.mtlcaas.ent.cgi.com
   port:
     targetPort: web
   tls:
